@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PrivacyPal — Safe AI. Anywhere.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Radley:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     PrivacyPal Sales Deck
+     Built from the PrivacyPal Brand Kit (AirOps #30260) +
+     the "PrivacyPal Sales Deck — Slide Outline" grid (#70031).
+     Apple-keynote system: one idea per slide, 40%+ whitespace,
+     hard-cut transitions, 300ms opacity-fade builds.
+     ============================================================ */
+
+  :root {
+    /* Core palette */
+    --white:   #FFFFFF;
+    --ivory:   #F0ECC9;
+    --navy:    #01204E;
+    --teal:    #028391;
+    /* Retro accent palette */
+    --coral:   #D54751;
+    --amber:   #F6DCAC;
+    --tangerine:#FAA968;
+    --sage:    #4DA394;
+    --espresso:#503D2D;
+
+    --gray-neutral: #F5F5F5;
+    --gray-logo: #9aa0a6;
+
+    /* Fonts */
+    --serif: 'Radley', Georgia, serif;          /* Headlines / display */
+    --sans:  'Inter', system-ui, sans-serif;     /* Body / UI */
+    --mono:  'JetBrains Mono', monospace;        /* Kickers / labels / data */
+
+    --stage-w: 1280px;
+    --stage-h: 720px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #0c0c0e;            /* dark surround behind the stage on screen */
+    font-family: var(--sans);
+    color: var(--navy);
+    overflow: hidden;
+  }
+
+  /* ---------- Stage (fixed 16:9, scaled to fit on screen) ---------- */
+  #stage {
+    position: fixed;
+    top: 50%; left: 50%;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: center center;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    background: var(--white);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 96px 110px;             /* ~10% margins → whitespace discipline */
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* 300ms content fade-in on slide entry (subtle build, no flashy transition) */
+  .slide.active .fade { animation: fadeIn .3s ease both; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ---------- Shared type roles ---------- */
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+  .kicker.espresso { color: var(--espresso); }
+
+  h1.display {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--navy);
+  }
+  h2.section {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+  h3.card {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+  .lede {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--espresso);
+    max-width: 56ch;
+  }
+  .subhead {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+  .body {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--espresso);
+    max-width: 56ch;
+  }
+  .metric {
+    font-family: var(--serif);
+    font-weight: 700;
+    line-height: 1.0;
+    color: var(--teal);
+    letter-spacing: -0.02em;
+  }
+  .italic-accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--navy);
+  }
+
+  /* ---------- Persistent footer logo (slides 2–16) ---------- */
+  .footer-mark {
+    position: absolute;
+    right: 56px; bottom: 44px;
+    height: 30px;
+    width: auto;
+    opacity: 0.9;
+  }
+  .slide-num {
+    position: absolute;
+    left: 56px; bottom: 46px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--espresso);
+    opacity: 0.55;
+  }
+
+  /* generic helpers */
+  .row { display: flex; }
+  .col { display: flex; flex-direction: column; }
+  .check {
+    flex: none;
+    width: 22px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--teal);
+  }
+  ul.clean { list-style: none; }
+  ul.clean li { display: flex; align-items: flex-start; gap: 14px; }
+
+  /* ============================================================
+     SLIDE-SPECIFIC STYLES
+     ============================================================ */
+
+  /* Slide 1 — Title */
+  #s1 { align-items: center; justify-content: center; text-align: center; }
+  #s1 .glow {
+    position: absolute;
+    width: 760px; height: 760px;
+    left: 50%; top: 46%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, var(--ivory) 0%, rgba(240,236,201,0.35) 38%, rgba(255,255,255,0) 70%);
+    z-index: 0;
+  }
+  #s1 .hero-logo { width: 40%; max-width: 512px; z-index: 1; margin-bottom: 40px; }
+  #s1 .hero-title {
+    font-family: var(--serif); font-weight: 700;
+    font-size: 96px; line-height: 0.95; letter-spacing: -0.03em;
+    color: var(--navy); z-index: 1;
+  }
+  #s1 .hero-sub {
+    font-family: var(--sans); font-weight: 300; font-size: 24px;
+    color: var(--espresso); margin-top: 22px; z-index: 1;
+  }
+
+  /* Slide 2 — Who We Are */
+  #s2 .grid { display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: center; }
+  .headshot {
+    width: 320px; height: 380px; border-radius: 14px; overflow: hidden;
+    border: 1px solid #e1e5ea;
+    box-shadow: 0 18px 40px rgba(1,32,78,0.10);
+  }
+  .headshot img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+  .metric-stack .line { display: flex; align-items: baseline; gap: 12px; margin: 9px 0; }
+  .metric-stack .label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); width: 132px; flex: none; }
+  .metric-stack .value { font-family: var(--sans); font-weight: 600; font-size: 19px; color: var(--navy); }
+  .logo-bar { display: flex; gap: 44px; align-items: center; margin-top: 30px; padding-top: 26px; border-top: 2px solid var(--teal); }
+  .logo-word { font-family: var(--sans); font-weight: 800; font-size: 19px; letter-spacing: 0.02em; color: var(--gray-logo); text-transform: uppercase; }
+  .logo-bar .plogo { height: 26px; width: auto; filter: grayscale(1); opacity: 0.6; }
+  .logo-bar .plogo.tall { height: 34px; }
+  .kicker-quote { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--espresso); margin-top: 26px; }
+
+  /* Slide 3 — Trust signals */
+  #s3 { align-items: center; text-align: center; }
+  #s3 .partner-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 48px; margin: 18px auto 0; max-width: 760px; }
+  #s3 .vert-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px 56px; margin: 22px auto 0; max-width: 880px; }
+  #s3 .logo-cell {
+    height: 78px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid #ececec; border-radius: 10px;
+  }
+  #s3 .logo-cell span { font-family: var(--sans); font-weight: 800; font-size: 17px; letter-spacing: 0.03em; color: var(--gray-logo); text-transform: uppercase; text-align: center; }
+  #s3 .logo-cell img { max-height: 46px; max-width: 78%; object-fit: contain; }
+  #s3 .vert { font-family: var(--mono); font-size: 13px; letter-spacing: 0.16em; color: var(--espresso); text-transform: uppercase; }
+  #s3 .metric-wrap { position: relative; margin-top: 46px; display: inline-flex; flex-direction: column; align-items: center; }
+  #s3 .metric-wrap .iv-wash { position: absolute; inset: -22px -60px; background: var(--ivory); opacity: 0.55; border-radius: 100px; z-index: 0; }
+  #s3 .metric-wrap .m { position: relative; z-index: 1; font-size: 92px; }
+  #s3 .metric-wrap .cap { position: relative; z-index: 1; font-family: var(--mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--espresso); margin-top: 6px; }
+
+  /* Slide 4 — Shadow AI Problem */
+  #s4 { padding-left: 130px; }
+  #s4 .coralbar { position: absolute; left: 0; top: 120px; bottom: 120px; width: 8px; background: var(--coral); }
+  #s4 .q { font-family: var(--serif); font-weight: 700; font-size: 58px; line-height: 1.04; letter-spacing: -0.02em; color: var(--navy); }
+  #s4 .event { font-family: var(--sans); font-weight: 600; font-size: 20px; color: var(--espresso); margin: 26px 0 18px; }
+  #s4 .datalist { display: flex; flex-wrap: wrap; gap: 12px 14px; max-width: 720px; }
+  #s4 .chip { font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; color: var(--espresso); border: 1px solid #e6ddd6; border-radius: 6px; padding: 8px 14px; background: #fbfaf8; }
+  #s4 .stack { margin-top: 30px; }
+  #s4 .stack p { font-family: var(--sans); font-weight: 700; font-size: 21px; color: var(--navy); line-height: 1.5; }
+  #s4 .stack p.now { color: var(--coral); }
+
+  /* Slide 5 — Governance Gap */
+  #s5 { align-items: flex-start; }
+  #s5 .bignum { position: relative; }
+  #s5 .bignum .amberglow { position: absolute; left: -40px; top: -30px; width: 420px; height: 320px; background: radial-gradient(circle, var(--amber) 0%, rgba(246,220,172,0) 68%); opacity: 0.6; z-index: 0; }
+  #s5 .bignum .n { position: relative; z-index: 1; font-family: var(--serif); font-weight: 700; font-size: 150px; line-height: 0.9; letter-spacing: -0.04em; color: var(--navy); }
+  #s5 .zero { font-family: var(--serif); font-weight: 700; font-size: 56px; letter-spacing: -0.02em; color: var(--navy); margin-top: 6px; }
+  #s5 .zero em { color: var(--coral); font-style: normal; }
+  #s5 .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 24px; max-width: 980px; }
+  #s5 .cisa { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--espresso); line-height: 1.5; border-left: 3px solid var(--amber); padding-left: 18px; }
+  #s5 .closer { font-family: var(--sans); font-weight: 700; font-size: 20px; color: var(--navy); }
+  #s5 .closer span { color: var(--teal); }
+
+  /* Slide 6 — Old Approach Fails */
+  #s6 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 26px; }
+  .promptbox { border-radius: 12px; padding: 24px 26px; font-family: var(--mono); font-size: 14px; line-height: 1.7; }
+  .promptbox.before { background: #fbfaf8; border: 1px solid #ece4dd; color: var(--espresso); }
+  .promptbox.after  { background: #f7f7f7; border: 1px solid #ededed; color: #9aa0a6; }
+  .promptbox .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--espresso); display: block; margin-bottom: 12px; }
+  .promptbox.after .lbl { color: var(--gray-logo); }
+  .redact { color: var(--coral); text-decoration: line-through; text-decoration-color: var(--coral); }
+  #s6 .closer { margin-top: 30px; font-family: var(--serif); font-weight: 700; font-size: 34px; letter-spacing: -0.02em; color: var(--navy); }
+  #s6 .threebreak { margin-top: 14px; display: flex; gap: 30px; }
+  #s6 .threebreak span { font-family: var(--sans); font-weight: 600; font-size: 16px; color: var(--coral); }
+
+  /* Slide 7 — Introducing PrivacyPal */
+  #s7 .tealbar { position: absolute; top: 0; left: 0; right: 0; height: 12px; background: var(--teal); }
+  #s7 ul.clean { margin-top: 30px; display: grid; gap: 18px; }
+  #s7 ul.clean li { font-family: var(--sans); font-weight: 500; font-size: 21px; color: var(--navy); }
+  #s7 .tagline { margin-top: 34px; font-family: var(--serif); font-style: italic; font-size: 30px; color: var(--espresso); }
+
+  /* Slide 8 — Privacy Twins */
+  #s8 .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 30px; background: var(--ivory); border-radius: 16px; padding: 34px 20px; position: relative; }
+  #s8 .step { padding: 0 22px; position: relative; }
+  #s8 .step:not(:last-child)::after {
+    content: ""; position: absolute; right: -6px; top: 34px; width: 12px; height: 12px;
+    border-top: 2px solid var(--teal); border-right: 2px solid var(--teal); transform: rotate(45deg);
+  }
+  #s8 .step .ico { width: 44px; height: 44px; color: var(--teal); margin-bottom: 14px; }
+  #s8 .step .n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--teal); text-transform: uppercase; }
+  #s8 .step .t { font-family: var(--serif); font-weight: 700; font-size: 23px; color: var(--navy); margin: 4px 0 8px; }
+  #s8 .step .d { font-family: var(--sans); font-size: 14.5px; line-height: 1.5; color: var(--espresso); }
+  #s8 .result { margin-top: 28px; font-family: var(--sans); font-weight: 700; font-size: 22px; color: var(--navy); }
+  #s8 .result span { color: var(--sage); }
+
+  /* Slide 9 — Governance & Visibility */
+  #s9 .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; margin-top: 24px; align-items: start; }
+  #s9 .panel h4 { font-family: var(--sans); font-weight: 700; font-size: 16px; color: var(--navy); margin-bottom: 12px; }
+  #s9 ul.clean { display: grid; gap: 11px; }
+  #s9 ul.clean li { font-family: var(--sans); font-size: 15.5px; color: var(--espresso); line-height: 1.4; }
+  .audit { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 13px; box-shadow: 0 14px 34px rgba(1,32,78,0.10); border-radius: 10px; overflow: hidden; }
+  .audit th { background: var(--teal); color: #fff; font-weight: 600; text-align: left; padding: 10px 12px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .audit td { padding: 9px 12px; color: var(--navy); border-bottom: 1px solid #eef0f2; }
+  .audit .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--sage); margin-right: 7px; }
+  .audit .risk { background: var(--coral); }
+  #s9 .closer { margin-top: 24px; grid-column: 1 / -1; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--navy); }
+
+  /* Slide 10 — Works Everywhere */
+  #s10 .toolgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
+  #s10 .tool { position: relative; height: 84px; border: 1px solid #ececec; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 11px; padding: 0 14px; box-shadow: 0 6px 16px rgba(1,32,78,0.05); }
+  #s10 .tool span { font-family: var(--sans); font-weight: 700; font-size: 16px; color: var(--navy); }
+  #s10 .toolicon { height: 30px; width: auto; flex: none; }
+  #s10 .toollogo { max-height: 32px; max-width: 84%; width: auto; object-fit: contain; }
+  #s10 .toollogo.wordmark { max-height: 17px; max-width: 54%; }
+  #s10 .tool .chk { position: absolute; top: 8px; right: 8px; color: var(--teal); width: 16px; height: 16px; }
+  #s10 .cats { display: flex; gap: 38px; margin-top: 20px; }
+  #s10 .cat { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--espresso); }
+  #s10 .bottombar { margin-top: 26px; display: inline-block; font-family: var(--sans); font-weight: 800; font-size: 21px; color: #fff; background: var(--tangerine); padding: 12px 26px; border-radius: 10px; }
+
+  /* Slide 11 & 15 — comparison tables */
+  table.cmp { width: 100%; border-collapse: collapse; margin-top: 22px; font-family: var(--sans); font-size: 15px; }
+  table.cmp th, table.cmp td { padding: 9px 16px; text-align: center; border-bottom: 1px solid #eef0f2; }
+  table.cmp th { font-weight: 700; font-size: 15px; }
+  table.cmp thead th { background: var(--teal); color: #fff; font-family: var(--serif); font-size: 18px; }
+  table.cmp tbody td:first-child, table.cmp thead th:first-child { text-align: left; color: var(--navy); font-weight: 500; }
+  table.cmp .yes { color: var(--sage); font-weight: 800; }
+  table.cmp .no  { color: var(--gray-logo); }
+  table.cmp .pp-col { background: rgba(2,131,145,0.07); }
+  table.cmp thead th.pp-col { background: var(--teal); }
+  table.cmp .cloud-col { background: rgba(246,220,172,0.32); }
+  table.cmp thead th.cloud-col { background: var(--teal); }
+  .cmp-foot { margin-top: 22px; font-family: var(--serif); font-weight: 700; font-size: 26px; letter-spacing: -0.02em; color: var(--navy); }
+  #s11 .tiers { display: flex; gap: 40px; margin-top: 18px; }
+  #s11 .tiers p { font-family: var(--sans); font-size: 16px; color: var(--espresso); }
+  #s11 .tiers b { color: var(--navy); }
+
+  /* Slide 12 — Deployment */
+  #s12 { align-items: center; text-align: center; }
+  #s12 .circles { display: flex; gap: 90px; margin-top: 50px; justify-content: center; }
+  #s12 .circle { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  #s12 .circle .num { width: 128px; height: 128px; border-radius: 50%; background: var(--teal); color: #fff; font-family: var(--serif); font-weight: 700; font-size: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0 16px 36px rgba(2,131,145,0.28); }
+  #s12 .circle .lab { font-family: var(--serif); font-weight: 700; font-size: 28px; color: var(--navy); }
+  #s12 .nots { margin-top: 50px; display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
+  #s12 .nots span { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; color: var(--espresso); }
+
+  /* Slide 13 — Who Uses */
+  #s13 .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 18px; align-items: start; }
+  #s13 .inds { display: flex; flex-direction: column; gap: 14px; }
+  #s13 .ind { display: flex; align-items: center; gap: 14px; font-family: var(--sans); font-weight: 600; font-size: 18px; color: var(--navy); }
+  #s13 .ind .ico { width: 26px; height: 26px; color: var(--sage); flex: none; }
+  #s13 .metric-side { display: flex; flex-direction: column; }
+  #s13 .metric-side .m { font-size: 96px; }
+  #s13 .metric-side .cap { font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--espresso); }
+  #s13 .uses { margin-top: 22px; display: grid; gap: 10px; }
+  #s13 .uses li { display: flex; gap: 12px; align-items: flex-start; font-family: var(--sans); font-size: 15px; color: var(--espresso); line-height: 1.4; }
+  #s13 .uses .arr { color: var(--tangerine); font-weight: 800; flex: none; }
+
+  /* Slide 14 — Testimonials */
+  #s14 { background: var(--ivory); }
+  #s14 .quotes { display: flex; flex-direction: column; gap: 30px; margin-top: 14px; max-width: 1000px; }
+  #s14 blockquote { position: relative; padding-left: 56px; }
+  #s14 blockquote .mark { position: absolute; left: 0; top: -18px; font-family: var(--serif); font-size: 76px; line-height: 1; color: var(--amber); }
+  #s14 blockquote p { font-family: var(--serif); font-size: 23px; line-height: 1.4; color: var(--navy); }
+  #s14 blockquote cite { display: block; margin-top: 8px; font-family: var(--sans); font-style: italic; font-size: 15px; color: var(--espresso); }
+  #s14 .closer { margin-top: 26px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--espresso); }
+
+  /* Slide 16 — Your Move */
+  #s16 { align-items: center; text-align: center; }
+  #s16 .ambergrad { position: absolute; left: 0; right: 0; bottom: 0; height: 260px; background: linear-gradient(to top, var(--amber) 0%, rgba(246,220,172,0) 100%); opacity: 0.5; z-index: 0; }
+  #s16 .inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+  #s16 h1 { font-family: var(--serif); font-weight: 700; font-size: 84px; letter-spacing: -0.03em; color: var(--navy); }
+  #s16 .ctas { display: flex; gap: 30px; margin-top: 40px; }
+  #s16 .cta { display: flex; flex-direction: column; gap: 6px; min-width: 220px; }
+  #s16 .cta .h { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--teal); }
+  #s16 .cta .d { font-family: var(--sans); font-size: 14px; color: var(--espresso); line-height: 1.45; }
+  #s16 .endtag { margin-top: 42px; font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--navy); }
+  #s16 .links { margin-top: 12px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--espresso); }
+
+  /* ---------- On-screen navigation hint + progress ---------- */
+  #hint {
+    position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+    color: #6b6f76; z-index: 50; opacity: 0.7;
+  }
+
+  /* ============================================================
+     PRINT  →  one slide per landscape page, 16:9, no scaling
+     ============================================================ */
+  @page { size: 1280px 720px; margin: 0; }
+  @media print {
+    html, body { background: #fff !important; overflow: visible !important; height: auto !important; }
+    #hint { display: none !important; }
+    /* !important required: fit() writes an inline transform that would otherwise win */
+    #stage {
+      position: static !important;
+      transform: none !important;
+      top: auto !important; left: auto !important;
+      width: var(--stage-w) !important; height: auto !important;
+    }
+    .slide {
+      position: relative !important; inset: auto !important;
+      opacity: 1 !important; pointer-events: auto;
+      page-break-after: always; break-after: page;
+      page-break-inside: avoid; break-inside: avoid;
+      width: var(--stage-w) !important; height: var(--stage-h) !important;
+      overflow: hidden;
+    }
+    .slide:last-child { page-break-after: avoid; break-after: avoid; }
+    .slide .fade { animation: none !important; }
+    /* keep ink-heavy backgrounds in PDF */
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stage">
+
+  <!-- ============ SLIDE 1 — TITLE ============ -->
+  <section class="slide active" id="s1">
+    <div class="glow fade"></div>
+    <img class="hero-logo fade" src="https://cdn.airops.com/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzM4MzQ4MTExLCJwdXIiOiJibG9iX2lkIn19--7c567af50f89a71bde919d38db96a26c19e13961/privacypal-logo-color.png" alt="PrivacyPal" />
+    <div class="hero-title fade">Safe AI. Anywhere.</div>
+    <div class="hero-sub fade">On-device data protection for every AI interaction.</div>
+  </section>
+
+  <!-- ============ SLIDE 2 — WHO WE ARE ============ -->
+  <section class="slide" id="s2">
+    <span class="kicker fade" style="margin-bottom:18px;">WHO WE ARE</span>
+    <div class="grid fade">
+      <div class="headshot">
+        <img src="assets/jason-melo.jpg" alt="Jason Melo, CEO of PrivacyPal" />
+      </div>
+      <div>
+        <h2 class="section" style="margin-bottom:6px;">Jason Melo</h2>
+        <div class="subhead" style="margin-bottom:22px;">Two-time unicorn founder. CEO, PrivacyPal.</div>
+        <div class="metric-stack">
+          <div class="line"><span class="label">Backed by</span><span class="value">Fastweb + Vodafone</span></div>
+          <div class="line"><span class="label">Partner</span><span class="value">NVIDIA Inception</span></div>
+          <div class="line"><span class="label">Traction</span><span class="value">10M+ records scanned and protected</span></div>
+          <div class="line"><span class="label">Featured</span><span class="value">Plug and Play Silicon Valley Summit — 4,000 attendees</span></div>
+        </div>
+        <div class="kicker-quote">We didn't build a feature. We built an architecture.</div>
+      </div>
+    </div>
+    <div class="logo-bar fade">
+      <img class="plogo" src="assets/vodafone-fastweb.png" alt="Vodafone X Fastweb" />
+      <img class="plogo tall" src="assets/nvidia-inception.png" alt="NVIDIA Inception" />
+      <img class="plogo" src="assets/plug-and-play.png" alt="Plug and Play" />
+    </div>
+    <span class="slide-num">02 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 3 — TRUST SIGNALS ============ -->
+  <section class="slide" id="s3">
+    <span class="kicker fade" style="margin-bottom:10px;">TRUSTED BY</span>
+    <h2 class="section fade" style="margin-bottom:8px;">The names behind us.</h2>
+    <div class="partner-row fade">
+      <div class="logo-cell"><img src="assets/vodafone-fastweb.png" alt="Vodafone X Fastweb" /></div>
+      <div class="logo-cell"><img src="assets/nvidia-inception.png" alt="NVIDIA Inception" /></div>
+      <div class="logo-cell"><img src="assets/plug-and-play.png" alt="Plug and Play" /></div>
+    </div>
+    <div class="vert-row fade">
+      <div class="logo-cell"><span class="vert">Finance</span></div>
+      <div class="logo-cell"><span class="vert">Healthcare</span></div>
+      <div class="logo-cell"><span class="vert">Legal</span></div>
+      <div class="logo-cell"><span class="vert">Technology</span></div>
+    </div>
+    <div class="metric-wrap fade">
+      <div class="iv-wash"></div>
+      <div class="metric m">10M+</div>
+      <div class="cap">records. protected.</div>
+    </div>
+    <span class="slide-num">03 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 4 — SHADOW AI PROBLEM ============ -->
+  <section class="slide" id="s4">
+    <div class="coralbar fade"></div>
+    <span class="kicker espresso fade" style="margin-bottom:16px;color:var(--coral);">THE SHADOW AI PROBLEM</span>
+    <div class="q fade">Does your team use ChatGPT?<br/>Do you know what they're pasting into it?</div>
+    <div class="event fade">Every prompt is a data event.</div>
+    <div class="datalist fade">
+      <span class="chip">Customer PII</span>
+      <span class="chip">Financial records</span>
+      <span class="chip">Health data</span>
+      <span class="chip">Source code &amp; API keys</span>
+      <span class="chip">Proprietary strategy docs</span>
+    </div>
+    <div class="stack fade">
+      <p>Your firewall can't see it.</p>
+      <p>Your DLP can't stop it.</p>
+      <p class="now">It's happening right now.</p>
+    </div>
+    <span class="slide-num">04 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 5 — GOVERNANCE GAP ============ -->
+  <section class="slide" id="s5">
+    <span class="kicker fade" style="color:var(--coral);margin-bottom:14px;">THE GOVERNANCE GAP</span>
+    <div class="bignum fade">
+      <div class="amberglow"></div>
+      <div class="n">10+</div>
+    </div>
+    <div class="zero fade">AI Agents in Production. <em>Zero</em> Governance Layer.</div>
+    <div class="twocol fade">
+      <ul class="clean" style="display:grid;gap:12px;">
+        <li class="body"><span class="check">—</span>No interception layer between sensitive data and the model</li>
+        <li class="body"><span class="check">—</span>No visibility into what's being sent, where, or by whom</li>
+        <li class="body"><span class="check">—</span>No enforcement mechanism that works at machine speed</li>
+      </ul>
+      <div>
+        <div class="cisa">2026: CISA + 5 intelligence agencies published a joint advisory warning about exactly this.</div>
+        <div class="closer" style="margin-top:20px;">The question isn't whether to use AI.<br/>It's <span>who's governing it.</span></div>
+      </div>
+    </div>
+    <span class="slide-num">05 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 6 — OLD APPROACH FAILS ============ -->
+  <section class="slide" id="s6">
+    <span class="kicker fade" style="color:var(--coral);margin-bottom:14px;">THE OLD APPROACH</span>
+    <h2 class="section fade">The old approach kills the output.</h2>
+    <div class="split fade">
+      <div class="promptbox before">
+        <span class="lbl">Input · Traditional DLP</span>
+        Prepare a financial summary for <span class="redact">[CLIENT NAME]</span> showing Q3 revenue of <span class="redact">$4.2M</span>
+      </div>
+      <div class="promptbox after">
+        <span class="lbl">Output · what the AI sees</span>
+        Prepare a financial summary for [REDACTED] showing Q3 revenue of [REDACTED]
+        <br/><br/>→ AI can't process it. Output is useless. Team bypasses the tool.
+      </div>
+    </div>
+    <div class="closer fade">The tradeoff between security and productivity shouldn't exist.</div>
+    <div class="threebreak fade">
+      <span>Redaction breaks context.</span>
+      <span>Redaction breaks accuracy.</span>
+      <span>Redaction breaks adoption.</span>
+    </div>
+    <span class="slide-num">06 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 7 — INTRODUCING PRIVACYPAL ============ -->
+  <section class="slide" id="s7">
+    <div class="tealbar fade"></div>
+    <span class="kicker fade" style="margin-bottom:14px;">INTRODUCING PRIVACYPAL</span>
+    <h2 class="section fade" style="max-width:18ch;">The AI privacy layer that doesn't break your workflow.</h2>
+    <ul class="clean fade">
+      <li><span class="check">✓</span>On-device protection — data never leaves your machine</li>
+      <li><span class="check">✓</span>Works across every AI tool your team uses</li>
+      <li><span class="check">✓</span>Browser extension + desktop app</li>
+      <li><span class="check">✓</span>One install. Full coverage.</li>
+      <li><span class="check">✓</span>Zero learning curve — runs silently in the background</li>
+    </ul>
+    <div class="tagline fade">Simple. Powerful. Private.</div>
+    <span class="slide-num">07 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 8 — PRIVACY TWINS ============ -->
+  <section class="slide" id="s8">
+    <span class="kicker fade" style="margin-bottom:10px;">HOW IT WORKS</span>
+    <h2 class="section fade">Privacy Twins™ — swap, don't strip.</h2>
+    <div class="flow fade">
+      <div class="step">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <div class="n">Step 1</div><div class="t">Detect</div>
+        <div class="d">Smart Detection identifies sensitive data the moment you type it.</div>
+      </div>
+      <div class="step">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="16 3 21 3 21 8"/><line x1="21" y1="3" x2="13" y2="11"/><polyline points="8 21 3 21 3 16"/><line x1="3" y1="21" x2="11" y2="13"/></svg>
+        <div class="n">Step 2</div><div class="t">Substitute</div>
+        <div class="d">Privacy Twins replace real data with synthetic stand-ins. Same format. Full context.</div>
+      </div>
+      <div class="step">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+        <div class="n">Step 3</div><div class="t">Process</div>
+        <div class="d">The AI model processes the twin. Returns accurate, useful results.</div>
+      </div>
+      <div class="step">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        <div class="n">Step 4</div><div class="t">Restore</div>
+        <div class="d">PrivacyPal maps twins back to your originals — locally, on your device.</div>
+      </div>
+    </div>
+    <div class="result fade"><span>100% accurate</span> AI responses. Zero data exposure. Zero workflow change.</div>
+    <span class="slide-num">08 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 9 — GOVERNANCE & VISIBILITY ============ -->
+  <section class="slide" id="s9">
+    <span class="kicker fade" style="margin-bottom:10px;">FULL GOVERNANCE &amp; VISIBILITY</span>
+    <h2 class="section fade">Stop guessing. Start seeing.</h2>
+    <div class="layout fade">
+      <div>
+        <div class="panel" style="margin-bottom:20px;">
+          <h4>Comprehensive Audit Log</h4>
+          <ul class="clean">
+            <li><span class="check" style="color:var(--sage)">✓</span>Every prompt sent to every third-party LLM — logged</li>
+            <li><span class="check" style="color:var(--sage)">✓</span>Which user. Which tool. Which data type. When.</li>
+            <li><span class="check" style="color:var(--sage)">✓</span>Identify high-risk behavior before it becomes a breach</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>Compliance-Ready</h4>
+          <ul class="clean">
+            <li><span class="check" style="color:var(--sage)">✓</span>Export-ready reporting for GDPR, CCPA, HIPAA, SOC 2</li>
+            <li><span class="check" style="color:var(--sage)">✓</span>Demonstrate exactly how data is handled at every step</li>
+            <li><span class="check" style="color:var(--sage)">✓</span>Real-time dashboard for security teams</li>
+          </ul>
+        </div>
+      </div>
+      <table class="audit">
+        <thead><tr><th>User</th><th>Tool</th><th>Data Type</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>a.chen</td><td>ChatGPT</td><td>Customer PII</td><td><span class="dot"></span>Protected</td></tr>
+          <tr><td>m.ruiz</td><td>Claude</td><td>Financial</td><td><span class="dot"></span>Protected</td></tr>
+          <tr><td>j.park</td><td>Copilot</td><td>Source code</td><td><span class="dot"></span>Protected</td></tr>
+          <tr><td>s.okoro</td><td>Gemini</td><td>Health data</td><td><span class="dot risk"></span>Flagged</td></tr>
+          <tr><td>d.lang</td><td>Cursor</td><td>API keys</td><td><span class="dot"></span>Protected</td></tr>
+        </tbody>
+      </table>
+      <div class="closer">You can't govern what you can't see.</div>
+    </div>
+    <span class="slide-num">09 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 10 — WORKS EVERYWHERE ============ -->
+  <section class="slide" id="s10">
+    <span class="kicker fade" style="margin-bottom:10px;">COVERAGE</span>
+    <h2 class="section fade">Works everywhere your team uses AI.</h2>
+    <div class="toolgrid fade">
+      <div class="tool"><img class="toollogo" src="assets/pp-chatgpt.png" alt="ChatGPT" /><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="tool"><img class="toollogo" src="assets/pp-claude.png" alt="Claude" /><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="tool"><img class="toollogo" src="assets/pp-gemini.png" alt="Gemini" /><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="tool"><img class="toollogo" src="assets/perplexity_wordmark.svg" alt="Perplexity" /><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="tool"><img class="toollogo" src="assets/pp-copilot.webp" alt="Copilot" /><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="tool"><img class="toolicon" src="assets/logo-claude.svg" alt="" /><span>Claude Code</span><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="tool"><img class="toollogo wordmark" src="assets/cursor_wordmark.svg" alt="Cursor" /><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="tool"><span>Codex</span><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="tool"><img class="toolicon" src="assets/openclaw.svg" alt="" /><span>OpenClaw</span><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="cats fade">
+      <span class="cat">Browser</span>
+      <span class="cat">Desktop</span>
+      <span class="cat">Mac · PC · iOS &amp; Android (soon)</span>
+    </div>
+    <div class="bottombar fade">One install. Full coverage.</div>
+    <span class="slide-num">10 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 11 — AI vs CLOUD ============ -->
+  <section class="slide" id="s11">
+    <span class="kicker fade" style="margin-bottom:8px;">PRODUCT TIERS</span>
+    <h2 class="section fade">Two products. One architecture.</h2>
+    <table class="cmp fade">
+      <thead><tr><th></th><th class="pp-col">PrivacyPal AI</th><th class="cloud-col">PrivacyPal Cloud</th></tr></thead>
+      <tbody>
+        <tr><td>Browser + Desktop</td><td class="pp-col yes">✓</td><td class="cloud-col yes">✓</td></tr>
+        <tr><td>Unlimited AI queries</td><td class="pp-col yes">✓</td><td class="cloud-col yes">✓</td></tr>
+        <tr><td>Privacy Twins</td><td class="pp-col yes">✓</td><td class="cloud-col yes">✓</td></tr>
+        <tr><td>Audit Log</td><td class="pp-col yes">✓</td><td class="cloud-col yes">✓</td></tr>
+        <tr><td>Self-hosted Privacy Twins</td><td class="pp-col no">—</td><td class="cloud-col yes">✓</td></tr>
+        <tr><td>DSPM (database scanning)</td><td class="pp-col no">—</td><td class="cloud-col yes">✓</td></tr>
+        <tr><td>Data sovereignty controls</td><td class="pp-col no">—</td><td class="cloud-col yes">✓</td></tr>
+        <tr><td>Admin governance console</td><td class="pp-col no">—</td><td class="cloud-col yes">✓</td></tr>
+        <tr><td>24/7 dedicated support</td><td class="pp-col no">—</td><td class="cloud-col yes">✓</td></tr>
+      </tbody>
+    </table>
+    <div class="tiers fade">
+      <p><b>PrivacyPal AI</b> = teams that need protection now.</p>
+      <p><b>PrivacyPal Cloud</b> = enterprises that need governance at scale.</p>
+    </div>
+    <span class="slide-num">11 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 12 — DEPLOYMENT ============ -->
+  <section class="slide" id="s12">
+    <span class="kicker fade" style="margin-bottom:8px;">FRICTIONLESS DEPLOYMENT</span>
+    <h2 class="section fade">Deploy in minutes. Not months.</h2>
+    <div class="circles fade">
+      <div class="circle"><div class="num">1</div><div class="lab">Install</div></div>
+      <div class="circle"><div class="num">2</div><div class="lab">Activate</div></div>
+      <div class="circle"><div class="num">3</div><div class="lab">Protected</div></div>
+    </div>
+    <div class="nots fade">
+      <span>No complex integration</span>
+      <span>No internal LLM to build</span>
+      <span>No rearchitecting your stack</span>
+      <span>No training required</span>
+    </div>
+    <span class="slide-num">12 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 13 — WHO USES ============ -->
+  <section class="slide" id="s13">
+    <span class="kicker fade" style="margin-bottom:8px;">WHO USES PRIVACYPAL</span>
+    <h2 class="section fade">Real teams. Real traction.</h2>
+    <div class="layout fade">
+      <div>
+        <div class="inds">
+          <div class="ind"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Financial Services &amp; Accounting</div>
+          <div class="ind"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Healthcare &amp; Life Sciences</div>
+          <div class="ind"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M5 7l7-4 7 4M5 7l-2 6a4 4 0 0 0 8 0L9 7M19 7l-2 6a4 4 0 0 0 8 0l-2-6"/></svg>Legal</div>
+          <div class="ind"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Enterprise Technology</div>
+          <div class="ind"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Engineering &amp; Product Teams</div>
+        </div>
+        <div class="metric-side" style="flex-direction:row;align-items:baseline;gap:14px;margin-top:28px;">
+          <span class="metric" style="font-size:72px;">10M+</span>
+          <span class="cap" style="font-family:var(--mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--espresso);">records scanned &amp; protected</span>
+        </div>
+      </div>
+      <div>
+        <div class="subhead" style="margin-bottom:6px;">Use Cases</div>
+        <ul class="uses">
+          <li><span class="arr">→</span>Legal teams protecting privileged information in AI drafting</li>
+          <li><span class="arr">→</span>Finance teams masking client data in AI analysis</li>
+          <li><span class="arr">→</span>Engineering teams securing code and API keys in AI coding assistants</li>
+          <li><span class="arr">→</span>HR teams protecting employee PII in AI communications</li>
+        </ul>
+        <div class="body" style="margin-top:18px;">Inbound from accounting firms, MSPs, and resellers — plus marketplace inclusion requested by partners.</div>
+      </div>
+    </div>
+    <span class="slide-num">13 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 14 — TESTIMONIALS ============ -->
+  <section class="slide" id="s14">
+    <span class="kicker fade" style="margin-bottom:6px;">WHAT PEOPLE ARE SAYING</span>
+    <div class="quotes fade">
+      <blockquote>
+        <span class="mark">“</span>
+        <p>From everything I've been able to find, PrivacyPal looks like one of the strongest solutions on the market.</p>
+        <cite>— Partner inbound, 2026</cite>
+      </blockquote>
+      <blockquote>
+        <span class="mark">“</span>
+        <p>The synthetic replacement angle is a clever way to meet security folks where they are without wrecking the day-to-day UX.</p>
+        <cite>— Product Hunt community</cite>
+      </blockquote>
+      <blockquote>
+        <span class="mark">“</span>
+        <p>Shadow AI is a huge problem already. I operate in third-party risk management and I'm already seeing a lot of vendors not dealing with this issue.</p>
+        <cite>— Industry practitioner</cite>
+      </blockquote>
+    </div>
+    <div class="closer fade">Unsolicited. Unprompted. Real.</div>
+    <span class="slide-num">14 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 15 — vs ALTERNATIVES ============ -->
+  <section class="slide" id="s15">
+    <span class="kicker fade" style="margin-bottom:8px;">THE COMPARISON</span>
+    <h2 class="section fade">PrivacyPal vs. the alternatives.</h2>
+    <table class="cmp fade">
+      <thead><tr><th></th><th class="pp-col">PrivacyPal</th><th>Traditional DLP</th><th>Cloud Proxies</th></tr></thead>
+      <tbody>
+        <tr><td>Data leaves your machine</td><td class="pp-col yes">No</td><td class="no">Yes</td><td class="no">Yes</td></tr>
+        <tr><td>AI output accuracy</td><td class="pp-col yes">100%</td><td class="no">Broken</td><td class="no">Partial</td></tr>
+        <tr><td>Real-time protection</td><td class="pp-col yes">Yes</td><td class="no">Batch/async</td><td class="no">API-based</td></tr>
+        <tr><td>Desktop AI coverage</td><td class="pp-col yes">Yes</td><td class="no">No</td><td class="no">No</td></tr>
+        <tr><td>All AI tools covered</td><td class="pp-col yes">One install</td><td class="no">Per-tool</td><td class="no">Limited</td></tr>
+        <tr><td>Self-hosted option</td><td class="pp-col yes">Yes</td><td class="no">N/A</td><td class="no">Some</td></tr>
+        <tr><td>Zero learning curve</td><td class="pp-col yes">Yes</td><td class="no">Training</td><td class="no">Config</td></tr>
+        <tr><td>Vendor sees your data</td><td class="pp-col yes">No</td><td class="no">Varies</td><td class="no">Yes</td></tr>
+      </tbody>
+    </table>
+    <div class="cmp-foot fade">The difference is architecture. Not policy.</div>
+    <span class="slide-num">15 / 16</span>
+  </section>
+
+  <!-- ============ SLIDE 16 — YOUR MOVE ============ -->
+  <section class="slide" id="s16">
+    <div class="ambergrad fade"></div>
+    <div class="inner fade">
+      <span class="kicker" style="margin-bottom:18px;">SAFE AI. ANYWHERE.</span>
+      <h1>Your Move.</h1>
+      <div class="ctas">
+        <div class="cta"><span class="h">Book a demo.</span><span class="d">See Privacy Twins in action across your actual AI tools.</span></div>
+        <div class="cta"><span class="h">Start a pilot.</span><span class="d">Deploy to a team in minutes. Measure the risk reduction.</span></div>
+        <div class="cta"><span class="h">Talk to us.</span><span class="d">Enterprise pricing. Custom deployment. Your questions answered.</span></div>
+      </div>
+      <div class="endtag">It starts with one conversation.</div>
+      <div class="links">privacypal.ai/cloud&nbsp;&nbsp;·&nbsp;&nbsp;Contact&nbsp;&nbsp;·&nbsp;&nbsp;Calendar</div>
+    </div>
+    <span class="slide-num">16 / 16</span>
+  </section>
+
+</div>
+
+<!-- footer icon mark injected on all slides except #1 -->
+<div id="hint">← → or Space to navigate · F fullscreen · P print/PDF</div>
+
+<script>
+  const ICON = "https://cdn.airops.com/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzM4MzQ4MTIzLCJwdXIiOiJibG9iX2lkIn19--e343b9f399c5adf7abc949c81b2baf540f6d503c/privacypal-logo-icon.png";
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  // add footer mark to every slide except the title
+  slides.forEach((s, i) => {
+    if (i === 0) return;
+    const img = document.createElement('img');
+    img.src = ICON; img.alt = 'PrivacyPal'; img.className = 'footer-mark';
+    s.appendChild(img);
+  });
+
+  let idx = 0;
+  function show(n) {
+    idx = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+  }
+  // Deep-link to a slide via #N (1-based) — e.g. file.html#10
+  function fromHash() {
+    const n = parseInt((location.hash || '').replace('#', ''), 10);
+    if (!isNaN(n) && n >= 1 && n <= slides.length) {
+      show(n - 1);
+      const hint = document.getElementById('hint');   // clean single-slide capture
+      if (hint) hint.style.display = 'none';
+    }
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  function fit() {
+    const sc = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    document.getElementById('stage').style.transform =
+      `translate(-50%, -50%) scale(${sc})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { show(idx + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(idx - 1); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(slides.length - 1); }
+    else if (e.key.toLowerCase() === 'f') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+    else if (e.key.toLowerCase() === 'p') { window.print(); }
+  });
+  // click right half → next, left half → prev
+  document.addEventListener('click', (e) => {
+    if (e.clientX > window.innerWidth / 2) show(idx + 1); else show(idx - 1);
+  });
+</script>
+</body>
+</html>
