@@ -1,6 +1,6 @@
 #!/bin/bash
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-cd /Users/jason/privacypal-sales-deck
+cd /Users/jason/dev/PrivacyPal/privacypal-sales-deck
 rm -f slides_hi/*.png 2>/dev/null
 mkdir -p slides_hi
 capture() {
@@ -12,7 +12,7 @@ capture() {
   "$CHROME" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=3 \
     --window-size=1280,720 --user-data-dir="$P" --no-first-run --no-default-browser-check \
     --virtual-time-budget=3500 --screenshot="$out" \
-    "file:///Users/jason/privacypal-sales-deck/privacypal-sales-deck.html#$i" >/dev/null 2>&1 &
+    "file:///Users/jason/dev/PrivacyPal/privacypal-sales-deck/privacypal-sales-deck.html#$i" >/dev/null 2>&1 &
   local pid=$!
   # wait up to 40s for the file to appear and stabilize
   local waited=0

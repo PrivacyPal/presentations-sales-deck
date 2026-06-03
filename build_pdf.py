@@ -4,8 +4,8 @@ Pure stdlib. Embeds JPEGs directly (DCTDecode) so there is no reflow,
 no font dependency, and no pagination drift -- each page IS the slide image."""
 import glob, os, struct, sys
 
-JPG_DIR = "/Users/jason/privacypal-sales-deck/slides_jpg"
-OUT = "/Users/jason/privacypal-sales-deck/privacypal-sales-deck.pdf"
+JPG_DIR = "/Users/jason/dev/PrivacyPal/privacypal-sales-deck/slides_jpg"
+OUT = "/Users/jason/dev/PrivacyPal/privacypal-sales-deck/privacypal-sales-deck.pdf"
 PAGE_W, PAGE_H = 960.0, 540.0  # points; 16:9 (matches PowerPoint widescreen 13.33in x 7.5in)
 
 def jpeg_size(data):

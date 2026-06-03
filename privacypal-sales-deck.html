@@ -256,17 +256,31 @@
   #s4 .stack p { font-family: var(--sans); font-weight: 700; font-size: 21px; color: var(--navy); line-height: 1.5; }
   #s4 .stack p.now { color: var(--coral); }
 
-  /* Slide 5 — Governance Gap */
+  /* Slide 5 — The Governance Layer (the space in between) */
   #s5 { align-items: flex-start; }
-  #s5 .bignum { position: relative; }
-  #s5 .bignum .amberglow { position: absolute; left: -40px; top: -30px; width: 420px; height: 320px; background: radial-gradient(circle, var(--amber) 0%, rgba(246,220,172,0) 68%); opacity: 0.6; z-index: 0; }
-  #s5 .bignum .n { position: relative; z-index: 1; font-family: var(--serif); font-weight: 700; font-size: 150px; line-height: 0.9; letter-spacing: -0.04em; color: var(--navy); }
-  #s5 .zero { font-family: var(--serif); font-weight: 700; font-size: 56px; letter-spacing: -0.02em; color: var(--navy); margin-top: 6px; }
-  #s5 .zero em { color: var(--coral); font-style: normal; }
-  #s5 .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 24px; max-width: 980px; }
-  #s5 .cisa { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--espresso); line-height: 1.5; border-left: 3px solid var(--amber); padding-left: 18px; }
-  #s5 .closer { font-family: var(--sans); font-weight: 700; font-size: 20px; color: var(--navy); }
-  #s5 .closer span { color: var(--teal); }
+  #s5 .head5 { font-family: var(--serif); font-weight: 700; font-size: 40px; line-height: 1.06; letter-spacing: -0.02em; color: var(--navy); }
+  #s5 .head5 em { color: var(--coral); font-style: normal; }
+  #s5 .sub5 { font-family: var(--sans); font-weight: 400; font-size: 16.5px; color: var(--espresso); margin-top: 12px; max-width: 70ch; line-height: 1.55; }
+  #s5 .arch { display: grid; grid-template-columns: 1fr 38px 1.2fr 38px 1fr; align-items: stretch; margin-top: 24px; }
+  #s5 .zone { border: 1px solid #ece4dd; border-radius: 14px; padding: 20px; background: #fbfaf8; display: flex; flex-direction: column; justify-content: center; }
+  #s5 .zone .zlabel { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+  #s5 .zone .ztitle { font-family: var(--serif); font-weight: 700; font-size: 21px; color: var(--navy); line-height: 1.1; }
+  #s5 .zone .zmeta { font-family: var(--sans); font-size: 13px; color: var(--espresso); line-height: 1.55; margin-top: 8px; }
+  #s5 .agents .big { font-family: var(--serif); font-weight: 700; font-size: 58px; line-height: 0.9; color: var(--navy); letter-spacing: -0.03em; }
+  #s5 .agents .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  #s5 .agents .chips span { font-family: var(--mono); font-size: 10.5px; color: var(--espresso); border: 1px solid #e6ddd6; border-radius: 5px; padding: 4px 8px; background: #fff; }
+  #s5 .conn { display: flex; align-items: center; justify-content: center; color: var(--teal); }
+  #s5 .conn svg { width: 22px; height: 22px; }
+  #s5 .gate { position: relative; border-radius: 14px; padding: 22px; background: linear-gradient(155deg, var(--teal) 0%, #015e69 100%); color: #fff; box-shadow: 0 18px 42px rgba(2,131,145,0.30); display: flex; flex-direction: column; justify-content: center; }
+  #s5 .gate .glabel { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.82); }
+  #s5 .gate .gtitle { font-family: var(--serif); font-weight: 700; font-size: 24px; line-height: 1.05; margin: 4px 0 14px; }
+  #s5 .gate ul { list-style: none; display: grid; gap: 9px; }
+  #s5 .gate li { display: flex; align-items: center; gap: 10px; font-family: var(--sans); font-weight: 600; font-size: 15px; }
+  #s5 .gate li svg { width: 16px; height: 16px; flex: none; color: var(--amber); }
+  #s5 .gate .endlabel { margin-top: 14px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.72); border-top: 1px solid rgba(255,255,255,0.22); padding-top: 10px; }
+  #s5 .closer5 { margin-top: 20px; font-family: var(--serif); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; color: var(--navy); }
+  #s5 .closer5 span { color: var(--teal); }
+  #s5 .cisa5 { margin-top: 8px; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--espresso); }
 
   /* Slide 6 — Old Approach Fails */
   #s6 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 26px; }
@@ -286,19 +300,30 @@
   #s7 ul.clean li { font-family: var(--sans); font-weight: 500; font-size: 21px; color: var(--navy); }
   #s7 .tagline { margin-top: 34px; font-family: var(--serif); font-style: italic; font-size: 30px; color: var(--espresso); }
 
-  /* Slide 8 — Privacy Twins */
-  #s8 .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 30px; background: var(--ivory); border-radius: 16px; padding: 34px 20px; position: relative; }
-  #s8 .step { padding: 0 22px; position: relative; }
-  #s8 .step:not(:last-child)::after {
-    content: ""; position: absolute; right: -6px; top: 34px; width: 12px; height: 12px;
-    border-top: 2px solid var(--teal); border-right: 2px solid var(--teal); transform: rotate(45deg);
-  }
-  #s8 .step .ico { width: 44px; height: 44px; color: var(--teal); margin-bottom: 14px; }
-  #s8 .step .n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--teal); text-transform: uppercase; }
-  #s8 .step .t { font-family: var(--serif); font-weight: 700; font-size: 23px; color: var(--navy); margin: 4px 0 8px; }
-  #s8 .step .d { font-family: var(--sans); font-size: 14.5px; line-height: 1.5; color: var(--espresso); }
-  #s8 .result { margin-top: 28px; font-family: var(--sans); font-weight: 700; font-size: 22px; color: var(--navy); }
-  #s8 .result span { color: var(--sage); }
+  /* Slide 8 — Privacy Twins · Contextual Swap */
+  #s8 .sublabel { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-top: 8px; }
+  #s8 .swap { display: grid; grid-template-columns: 1fr 48px 1fr; align-items: stretch; margin-top: 20px; }
+  #s8 .pcard { border-radius: 14px; padding: 20px 22px; display: flex; flex-direction: column; }
+  #s8 .pcard.you { background: #fbfaf8; border: 1px solid #ece4dd; }
+  #s8 .pcard.ai { background: linear-gradient(160deg, #f1faf7 0%, #eaf6f2 100%); border: 1px solid #d4e9e2; }
+  #s8 .pcard .plbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+  #s8 .pcard.you .plbl { color: var(--coral); }
+  #s8 .pcard.ai .plbl { color: var(--sage); }
+  #s8 .pcard .ptext { font-family: var(--sans); font-size: 15.5px; line-height: 1.85; color: var(--navy); }
+  #s8 .sensitive { background: rgba(213,71,81,0.12); color: var(--coral); border-radius: 4px; padding: 1px 5px; font-weight: 600; }
+  #s8 .twin { background: rgba(77,163,148,0.18); color: #2c7c6c; border-radius: 4px; padding: 1px 5px; font-weight: 600; }
+  #s8 .swaparrow { display: flex; align-items: center; justify-content: center; }
+  #s8 .swaparrow .pill { width: 46px; height: 46px; border-radius: 50%; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 22px rgba(2,131,145,0.32); }
+  #s8 .swaparrow .pill svg { width: 22px; height: 22px; }
+  #s8 .maprow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+  #s8 .mapcard { border: 1px solid #ece4dd; border-radius: 10px; padding: 11px 14px; background: #fff; }
+  #s8 .mapcard .mf { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--espresso); margin-bottom: 5px; }
+  #s8 .mapcard .mp { font-family: var(--sans); font-size: 12.5px; line-height: 1.4; color: var(--espresso); }
+  #s8 .mapcard .mp .ar { color: var(--teal); margin: 0 5px; font-weight: 700; }
+  #s8 .mapcard .mp .a { color: #2c7c6c; font-weight: 700; }
+  #s8 .badges { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  #s8 .badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-weight: 600; font-size: 13.5px; color: var(--navy); background: var(--ivory); border-radius: 100px; padding: 8px 16px; }
+  #s8 .badge svg { width: 15px; height: 15px; color: var(--sage); flex: none; }
 
   /* Slide 9 — Governance & Visibility */
   #s9 .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; margin-top: 24px; align-items: start; }
@@ -502,25 +527,41 @@
     <span class="slide-num">04 / 16</span>
   </section>
 
-  <!-- ============ SLIDE 5 — GOVERNANCE GAP ============ -->
+  <!-- ============ SLIDE 5 — THE GOVERNANCE LAYER ============ -->
   <section class="slide" id="s5">
-    <span class="kicker fade" style="color:var(--coral);margin-bottom:14px;">THE GOVERNANCE GAP</span>
-    <div class="bignum fade">
-      <div class="amberglow"></div>
-      <div class="n">10+</div>
-    </div>
-    <div class="zero fade">AI Agents in Production. <em>Zero</em> Governance Layer.</div>
-    <div class="twocol fade">
-      <ul class="clean" style="display:grid;gap:12px;">
-        <li class="body"><span class="check">—</span>No interception layer between sensitive data and the model</li>
-        <li class="body"><span class="check">—</span>No visibility into what's being sent, where, or by whom</li>
-        <li class="body"><span class="check">—</span>No enforcement mechanism that works at machine speed</li>
-      </ul>
-      <div>
-        <div class="cisa">2026: CISA + 5 intelligence agencies published a joint advisory warning about exactly this.</div>
-        <div class="closer" style="margin-top:20px;">The question isn't whether to use AI.<br/>It's <span>who's governing it.</span></div>
+    <span class="kicker fade" style="color:var(--coral);margin-bottom:12px;">THE GOVERNANCE GAP</span>
+    <div class="head5 fade">10+ AI agents are already in your environment.<br/>Nothing governs the space <em>in between.</em></div>
+    <div class="sub5 fade">You can't safely implement AI until one layer sits between your data and every model — governing each interaction end-to-end, from data privacy to controls to usage audit.</div>
+    <div class="arch fade">
+      <div class="zone">
+        <div class="zlabel">Your Enterprise</div>
+        <div class="ztitle">Sensitive data &amp; teams</div>
+        <div class="zmeta">Customer PII · Financials · Source code · Strategy docs</div>
+      </div>
+      <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 6 15 12 9 18"/></svg></div>
+      <div class="gate">
+        <div class="glabel">PrivacyPal · The Governance Layer</div>
+        <div class="gtitle">End-to-end. In between.</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Data Privacy</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Policy &amp; Controls</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Usage Audit</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Compliance &amp; Visibility</li>
+        </ul>
+        <div class="endlabel">One layer · machine speed · every interaction</div>
+      </div>
+      <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 6 15 12 9 18"/></svg></div>
+      <div class="zone agents">
+        <div class="zlabel">In Production</div>
+        <div class="big">10+</div>
+        <div class="ztitle" style="font-size:18px;margin-top:2px;">AI agents &amp; tools</div>
+        <div class="chips">
+          <span>ChatGPT</span><span>Claude</span><span>Copilot</span><span>Gemini</span><span>Cursor</span><span>Custom agents</span>
+        </div>
       </div>
     </div>
+    <div class="closer5 fade">The question isn't whether to use AI. It's <span>who's governing it.</span></div>
+    <div class="cisa5 fade">2026: CISA + 5 intelligence agencies issued a joint advisory warning about exactly this gap.</div>
     <span class="slide-num">05 / 16</span>
   </section>
 
@@ -564,33 +605,36 @@
     <span class="slide-num">07 / 16</span>
   </section>
 
-  <!-- ============ SLIDE 8 — PRIVACY TWINS ============ -->
+  <!-- ============ SLIDE 8 — PRIVACY TWINS · CONTEXTUAL SWAP ============ -->
   <section class="slide" id="s8">
-    <span class="kicker fade" style="margin-bottom:10px;">HOW IT WORKS</span>
-    <h2 class="section fade">Privacy Twins™ — swap, don't strip.</h2>
-    <div class="flow fade">
-      <div class="step">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
-        <div class="n">Step 1</div><div class="t">Detect</div>
-        <div class="d">Smart Detection identifies sensitive data the moment you type it.</div>
+    <span class="kicker fade" style="margin-bottom:0;">HOW IT WORKS</span>
+    <h2 class="section fade" style="margin-top:6px;">Privacy Twins™ — swap, don't strip.</h2>
+    <div class="sublabel fade">PRIVACY TWIN · 47 SENSITIVE DATA TYPES · CONTEXTUAL SWAP</div>
+    <div class="swap fade">
+      <div class="pcard you">
+        <span class="plbl">What you type</span>
+        <div class="ptext">Draft the Q3 board memo for <span class="sensitive">Acme Corp</span>. Revenue hit <span class="sensitive">$4.2M</span>; flag the variance to CFO <span class="sensitive">Sarah Chen</span> at <span class="sensitive">sarah.chen@acme.com</span> before Friday.</div>
       </div>
-      <div class="step">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="16 3 21 3 21 8"/><line x1="21" y1="3" x2="13" y2="11"/><polyline points="8 21 3 21 3 16"/><line x1="3" y1="21" x2="11" y2="13"/></svg>
-        <div class="n">Step 2</div><div class="t">Substitute</div>
-        <div class="d">Privacy Twins replace real data with synthetic stand-ins. Same format. Full context.</div>
+      <div class="swaparrow">
+        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
       </div>
-      <div class="step">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
-        <div class="n">Step 3</div><div class="t">Process</div>
-        <div class="d">The AI model processes the twin. Returns accurate, useful results.</div>
-      </div>
-      <div class="step">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-        <div class="n">Step 4</div><div class="t">Restore</div>
-        <div class="d">PrivacyPal maps twins back to your originals — locally, on your device.</div>
+      <div class="pcard ai">
+        <span class="plbl">What the AI sees</span>
+        <div class="ptext">Draft the Q3 board memo for <span class="twin">Vertex Inc</span>. Revenue hit <span class="twin">$5.1M</span>; flag the variance to CFO <span class="twin">Diana Hale</span> at <span class="twin">diana.hale@vertex.com</span> before Friday.</div>
       </div>
     </div>
-    <div class="result fade"><span>100% accurate</span> AI responses. Zero data exposure. Zero workflow change.</div>
+    <div class="maprow fade">
+      <div class="mapcard"><div class="mf">Company</div><div class="mp">Acme Corp<span class="ar">→</span><span class="a">Vertex Inc</span></div></div>
+      <div class="mapcard"><div class="mf">Revenue</div><div class="mp">$4.2M<span class="ar">→</span><span class="a">$5.1M</span></div></div>
+      <div class="mapcard"><div class="mf">Name</div><div class="mp">Sarah Chen<span class="ar">→</span><span class="a">Diana Hale</span></div></div>
+      <div class="mapcard"><div class="mf">Email</div><div class="mp">sarah.chen@…<span class="ar">→</span><span class="a">diana.hale@…</span></div></div>
+    </div>
+    <div class="badges fade">
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Context Intact</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Zero Data on the Wire</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Restored On-Device</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>100% Accurate Output</span>
+    </div>
     <span class="slide-num">08 / 16</span>
   </section>
 
