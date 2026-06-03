@@ -300,30 +300,33 @@
   #s7 ul.clean li { font-family: var(--sans); font-weight: 500; font-size: 21px; color: var(--navy); }
   #s7 .tagline { margin-top: 34px; font-family: var(--serif); font-style: italic; font-size: 30px; color: var(--espresso); }
 
-  /* Slide 8 — Privacy Twins · Contextual Swap */
+  /* Slide 8 — Privacy Twins · full round-trip (swap → process → restore) */
   #s8 .sublabel { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-top: 8px; }
-  #s8 .swap { display: grid; grid-template-columns: 1fr 48px 1fr; align-items: stretch; margin-top: 20px; }
-  #s8 .pcard { border-radius: 14px; padding: 20px 22px; display: flex; flex-direction: column; }
+  #s8 .colhead { display: grid; grid-template-columns: 1fr 70px 1fr; margin-top: 14px; }
+  #s8 .colhead .ch { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--espresso); }
+  #s8 .colhead .ch.r { color: var(--sage); }
+  #s8 .loop { display: grid; grid-template-columns: 1fr 70px 1fr; row-gap: 12px; margin-top: 6px; align-items: stretch; }
+  #s8 .pcard { border-radius: 13px; padding: 13px 18px; display: flex; flex-direction: column; justify-content: center; }
   #s8 .pcard.you { background: #fbfaf8; border: 1px solid #ece4dd; }
   #s8 .pcard.ai { background: linear-gradient(160deg, #f1faf7 0%, #eaf6f2 100%); border: 1px solid #d4e9e2; }
-  #s8 .pcard .plbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+  #s8 .pcard.result { background: #f5fbf9; border: 1.5px solid var(--sage); box-shadow: 0 10px 26px rgba(77,163,148,0.18); }
+  #s8 .pcard .plbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 8px; display: flex; gap: 7px; align-items: baseline; }
   #s8 .pcard.you .plbl { color: var(--coral); }
   #s8 .pcard.ai .plbl { color: var(--sage); }
-  #s8 .pcard .ptext { font-family: var(--sans); font-size: 15.5px; line-height: 1.85; color: var(--navy); }
-  #s8 .sensitive { background: rgba(213,71,81,0.12); color: var(--coral); border-radius: 4px; padding: 1px 5px; font-weight: 600; }
+  #s8 .pcard .plbl .sub { font-weight: 400; color: var(--espresso); letter-spacing: 0.06em; }
+  #s8 .pcard .ptext { font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--navy); }
+  #s8 .sensitive { background: rgba(213,71,81,0.13); color: var(--coral); border-radius: 4px; padding: 1px 5px; font-weight: 600; }
   #s8 .twin { background: rgba(77,163,148,0.18); color: #2c7c6c; border-radius: 4px; padding: 1px 5px; font-weight: 600; }
-  #s8 .swaparrow { display: flex; align-items: center; justify-content: center; }
-  #s8 .swaparrow .pill { width: 46px; height: 46px; border-radius: 50%; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 22px rgba(2,131,145,0.32); }
-  #s8 .swaparrow .pill svg { width: 22px; height: 22px; }
-  #s8 .maprow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
-  #s8 .mapcard { border: 1px solid #ece4dd; border-radius: 10px; padding: 11px 14px; background: #fff; }
-  #s8 .mapcard .mf { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--espresso); margin-bottom: 5px; }
-  #s8 .mapcard .mp { font-family: var(--sans); font-size: 12.5px; line-height: 1.4; color: var(--espresso); }
-  #s8 .mapcard .mp .ar { color: var(--teal); margin: 0 5px; font-weight: 700; }
-  #s8 .mapcard .mp .a { color: #2c7c6c; font-weight: 700; }
-  #s8 .badges { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
-  #s8 .badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-weight: 600; font-size: 13.5px; color: var(--navy); background: var(--ivory); border-radius: 100px; padding: 8px 16px; }
-  #s8 .badge svg { width: 15px; height: 15px; color: var(--sage); flex: none; }
+  #s8 .conn8 { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+  #s8 .conn8 .pill { width: 40px; height: 40px; border-radius: 50%; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(2,131,145,0.30); }
+  #s8 .conn8.restore .pill { background: var(--sage); box-shadow: 0 6px 16px rgba(77,163,148,0.32); }
+  #s8 .conn8 .pill svg { width: 19px; height: 19px; }
+  #s8 .conn8 .cl { font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--espresso); text-align: center; line-height: 1.3; }
+  #s8 .badges { display: flex; gap: 9px; margin-top: 14px; flex-wrap: wrap; }
+  #s8 .badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--sans); font-weight: 600; font-size: 13px; color: var(--navy); background: var(--ivory); border-radius: 100px; padding: 7px 15px; }
+  #s8 .badge svg { width: 14px; height: 14px; color: var(--sage); flex: none; }
+  #s8 .badge.accent { background: var(--sage); color: #fff; }
+  #s8 .badge.accent svg { color: #fff; }
 
   /* Slide 9 — Governance & Visibility */
   #s9 .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; margin-top: 24px; align-items: start; }
@@ -605,35 +608,49 @@
     <span class="slide-num">07 / 16</span>
   </section>
 
-  <!-- ============ SLIDE 8 — PRIVACY TWINS · CONTEXTUAL SWAP ============ -->
+  <!-- ============ SLIDE 8 — PRIVACY TWINS · FULL ROUND-TRIP ============ -->
   <section class="slide" id="s8">
     <span class="kicker fade" style="margin-bottom:0;">HOW IT WORKS</span>
-    <h2 class="section fade" style="margin-top:6px;">Privacy Twins™ — swap, don't strip.</h2>
-    <div class="sublabel fade">PRIVACY TWIN · 47 SENSITIVE DATA TYPES · CONTEXTUAL SWAP</div>
-    <div class="swap fade">
+    <h2 class="section fade" style="margin-top:6px;">Privacy Twins™ — swap, process, restore.</h2>
+    <div class="sublabel fade">PRIVACY TWIN · 18 HIPAA IDENTIFIERS · CONTEXTUAL SWAP · §164.514</div>
+    <div class="colhead fade">
+      <div class="ch">On your device — real PHI</div>
+      <div></div>
+      <div class="ch r">What the model sees — twins only</div>
+    </div>
+    <div class="loop fade">
+      <!-- Row 1: the prompt goes out, substituted -->
       <div class="pcard you">
-        <span class="plbl">What you type</span>
-        <div class="ptext">Draft the Q3 board memo for <span class="sensitive">Acme Corp</span>. Revenue hit <span class="sensitive">$4.2M</span>; flag the variance to CFO <span class="sensitive">Sarah Chen</span> at <span class="sensitive">sarah.chen@acme.com</span> before Friday.</div>
+        <span class="plbl">① What you type<span class="sub">in ChatGPT</span></span>
+        <div class="ptext">"My 68-year-old patient <span class="sensitive">Margaret Chen</span> — recent MI, lives alone on <span class="sensitive">Oak Street</span> in <span class="sensitive">Lakewood</span>, <span class="sensitive">MRN 4471-8829</span> — presented to the ED <span class="sensitive">March 14</span> with chest pain. What's the workup?"</div>
       </div>
-      <div class="swaparrow">
-        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+      <div class="conn8">
+        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+        <div class="cl">Substitute<br/>on-device</div>
       </div>
       <div class="pcard ai">
-        <span class="plbl">What the AI sees</span>
-        <div class="ptext">Draft the Q3 board memo for <span class="twin">Vertex Inc</span>. Revenue hit <span class="twin">$5.1M</span>; flag the variance to CFO <span class="twin">Diana Hale</span> at <span class="twin">diana.hale@vertex.com</span> before Friday.</div>
+        <span class="plbl">② What the AI sees<span class="sub">cloud model</span></span>
+        <div class="ptext">"My 68-year-old patient <span class="twin">Nancy Grace</span> — recent MI, lives alone on <span class="twin">Pine Avenue</span> in <span class="twin">Brookside</span>, <span class="twin">MRN 8826-3142</span> — presented to the ED <span class="twin">April 22</span> with chest pain. What's the workup?"</div>
+      </div>
+      <!-- Row 2: the accurate answer comes back, restored -->
+      <div class="pcard you result">
+        <span class="plbl">④ What you get back<span class="sub">restored · 100% accurate</span></span>
+        <div class="ptext">For <span class="sensitive">Margaret Chen</span>: 12-lead ECG + serial high-sensitivity troponins now, aspirin and a nitrate, admit under cardiology to rule out re-infarction.</div>
+      </div>
+      <div class="conn8 restore">
+        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg></div>
+        <div class="cl">Restore<br/>on-device</div>
+      </div>
+      <div class="pcard ai">
+        <span class="plbl">③ What the AI returns<span class="sub">answer on the twin</span></span>
+        <div class="ptext">For <span class="twin">Nancy Grace</span>: 12-lead ECG + serial high-sensitivity troponins now, aspirin and a nitrate, admit under cardiology to rule out re-infarction.</div>
       </div>
     </div>
-    <div class="maprow fade">
-      <div class="mapcard"><div class="mf">Company</div><div class="mp">Acme Corp<span class="ar">→</span><span class="a">Vertex Inc</span></div></div>
-      <div class="mapcard"><div class="mf">Revenue</div><div class="mp">$4.2M<span class="ar">→</span><span class="a">$5.1M</span></div></div>
-      <div class="mapcard"><div class="mf">Name</div><div class="mp">Sarah Chen<span class="ar">→</span><span class="a">Diana Hale</span></div></div>
-      <div class="mapcard"><div class="mf">Email</div><div class="mp">sarah.chen@…<span class="ar">→</span><span class="a">diana.hale@…</span></div></div>
-    </div>
     <div class="badges fade">
-      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Context Intact</span>
-      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Zero Data on the Wire</span>
-      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Restored On-Device</span>
-      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>100% Accurate Output</span>
+      <span class="badge accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>100% Accurate Results</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Clinical Context Intact</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Zero PHI on the Wire</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>No BAA Required</span>
     </div>
     <span class="slide-num">08 / 16</span>
   </section>
