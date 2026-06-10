@@ -29,12 +29,12 @@ capture() {
   rm -rf "$P"
   [ -f "$out" ] && echo "cap $N ok ($(stat -f%z "$out") b)" || echo "cap $N FAIL"
 }
-for i in $(seq 1 16); do capture $i; done
+for i in $(seq 1 18); do capture $i; done
 # reap any stragglers
 pkill -f "Google Chrome --headless" >/dev/null 2>&1
 CNT=$(ls slides_hi/*.png 2>/dev/null | wc -l | tr -d ' ')
 echo "=== captured: $CNT"
-[ "$CNT" = "16" ] || { echo "ABORT not all captured"; exit 1; }
+[ "$CNT" = "18" ] || { echo "ABORT not all captured"; exit 1; }
 for f in slides_hi/slide-*.png; do b=$(basename "$f" .png); sips -s format jpeg -s formatOptions 95 "$f" --out "slides_jpg/$b.jpg" >/dev/null 2>&1; done
 echo "=== jpeg: $(ls slides_jpg/*.jpg | wc -l)"
 sips -g pixelWidth -g pixelHeight slides_jpg/slide-01.jpg
