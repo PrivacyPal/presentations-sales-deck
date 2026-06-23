@@ -4,8 +4,10 @@ Pure stdlib. Embeds JPEGs directly (DCTDecode) so there is no reflow,
 no font dependency, and no pagination drift -- each page IS the slide image."""
 import glob, os, struct, sys
 
-JPG_DIR = "/Users/jason/dev/PrivacyPal/privacypal-sales-deck/slides_jpg"
-OUT = "/Users/jason/dev/PrivacyPal/privacypal-sales-deck/privacypal-sales-deck.pdf"
+BASE = "/Users/jason/dev/PrivacyPal/privacypal-sales-deck"
+# Usage: python3 build_pdf.py [jpg_dir] [out.pdf]   (defaults to the SME deck)
+JPG_DIR = sys.argv[1] if len(sys.argv) > 1 else os.path.join(BASE, "slides_jpg")
+OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(BASE, "privacypal-sales-deck.pdf")
 PAGE_W, PAGE_H = 960.0, 540.0  # points; 16:9 (matches PowerPoint widescreen 13.33in x 7.5in)
 
 def jpeg_size(data):

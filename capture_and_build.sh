@@ -39,6 +39,7 @@ for f in slides_hi/slide-*.png; do b=$(basename "$f" .png); sips -s format jpeg 
 echo "=== jpeg: $(ls slides_jpg/*.jpg | wc -l)"
 sips -g pixelWidth -g pixelHeight slides_jpg/slide-01.jpg
 python3 build_pdf.py
+python3 build_pptx.py
 mdls -name kMDItemNumberOfPages privacypal-sales-deck.pdf 2>/dev/null
-ls -la privacypal-sales-deck.pdf
+ls -la privacypal-sales-deck.pdf privacypal-sales-deck.pptx
 echo "ALL_DONE"
