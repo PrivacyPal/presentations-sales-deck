@@ -1,0 +1,7 @@
+Background photography — Unsplash License (free for commercial use, no attribution required).
+bg-shadow.jpg    — laptop / code in the dark        unsplash photo-1510511459019-5dda7724fd87
+bg-server.jpg    — data center / network cabling    unsplash photo-1558494949-ef010cbdcc31
+bg-towers.jpg    — corporate towers (upward view)   unsplash photo-1486406146926-c627a92ad1ab
+bg-skyline.jpg   — city skyline at blue hour        unsplash photo-1444723121867-7a241cacace9
+bg-clinician.jpg — clinician with device            unsplash photo-1576091160399-112ba8d25d1d
+bg-hero/even/dark.jpg — gradient plates from privacypal-event-media event deck
